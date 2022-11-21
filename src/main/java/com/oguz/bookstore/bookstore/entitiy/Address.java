@@ -1,9 +1,9 @@
 package com.oguz.bookstore.bookstore.entitiy;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.google.common.base.Objects;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @Table(name = "address")
@@ -151,43 +151,16 @@ public class Address extends BaseEntity{
     this.zipCode = zipCode;
   }
 
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-
     Address address = (Address) o;
-
-    if (addressId != address.addressId) return false;
-    if (!Objects.equals(counrty, address.counrty)) return false;
-    if (!Objects.equals(city, address.city)) return false;
-    if (!Objects.equals(addressLine1, address.addressLine1)) return false;
-    if (!Objects.equals(addressLine2, address.addressLine2)) return false;
-    if (!Objects.equals(addressLine3, address.addressLine3)) return false;
-    if (!Objects.equals(addressLine4, address.addressLine4)) return false;
-    if (!Objects.equals(addressLine5, address.addressLine5)) return false;
-    if (!Objects.equals(deliveryInstructions, address.deliveryInstructions))
-      return false;
-    if (!Objects.equals(flatNumber, address.flatNumber)) return false;
-    if (!Objects.equals(entrance, address.entrance)) return false;
-    return Objects.equals(zipCode, address.zipCode);
+    return addressId == address.addressId && Objects.equal(counrty, address.counrty) && Objects.equal(city, address.city) && Objects.equal(addressLine1, address.addressLine1) && Objects.equal(addressLine2, address.addressLine2) && Objects.equal(addressLine3, address.addressLine3) && Objects.equal(addressLine4, address.addressLine4) && Objects.equal(addressLine5, address.addressLine5) && Objects.equal(deliveryInstructions, address.deliveryInstructions) && Objects.equal(flatNumber, address.flatNumber) && Objects.equal(entrance, address.entrance) && Objects.equal(zipCode, address.zipCode) && Objects.equal(customer, address.customer);
   }
 
   @Override
   public int hashCode() {
-    int result = (int) (addressId ^ (addressId >>> 32));
-    result = 31 * result + (counrty != null ? counrty.hashCode() : 0);
-    result = 31 * result + (city != null ? city.hashCode() : 0);
-    result = 31 * result + (addressLine1 != null ? addressLine1.hashCode() : 0);
-    result = 31 * result + (addressLine2 != null ? addressLine2.hashCode() : 0);
-    result = 31 * result + (addressLine3 != null ? addressLine3.hashCode() : 0);
-    result = 31 * result + (addressLine4 != null ? addressLine4.hashCode() : 0);
-    result = 31 * result + (addressLine5 != null ? addressLine5.hashCode() : 0);
-    result = 31 * result + (deliveryInstructions != null ? deliveryInstructions.hashCode() : 0);
-    result = 31 * result + (flatNumber != null ? flatNumber.hashCode() : 0);
-    result = 31 * result + (entrance != null ? entrance.hashCode() : 0);
-    result = 31 * result + (zipCode != null ? zipCode.hashCode() : 0);
-    return result;
+    return Objects.hashCode(addressId, counrty, city, addressLine1, addressLine2, addressLine3, addressLine4, addressLine5, deliveryInstructions, flatNumber, entrance, zipCode, customer);
   }
 }

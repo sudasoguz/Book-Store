@@ -1,5 +1,7 @@
 package com.oguz.bookstore.bookstore.entitiy;
 
+import com.google.common.base.Objects;
+
 import javax.persistence.*;
 
 @Entity
@@ -102,31 +104,13 @@ public class Book extends BaseEntity{
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-
     Book book = (Book) o;
-
-    if (bookId != book.bookId) return false;
-    if (page != book.page) return false;
-    if (Double.compare(book.price, price) != 0) return false;
-    if (stockAmount != book.stockAmount) return false;
-    if (!isbn.equals(book.isbn)) return false;
-    if (!bookName.equals(book.bookName)) return false;
-    return authorName.equals(book.authorName);
+    return bookId == book.bookId && page == book.page && Double.compare(book.price, price) == 0 && stockAmount == book.stockAmount && Objects.equal(isbn, book.isbn) && Objects.equal(bookName, book.bookName) && Objects.equal(authorName, book.authorName);
   }
 
   @Override
   public int hashCode() {
-    int result;
-    long temp;
-    result = (int) (bookId ^ (bookId >>> 32));
-    result = 31 * result + isbn.hashCode();
-    result = 31 * result + bookName.hashCode();
-    result = 31 * result + authorName.hashCode();
-    result = 31 * result + page;
-    temp = Double.doubleToLongBits(price);
-    result = 31 * result + (int) (temp ^ (temp >>> 32));
-    result = 31 * result + (int) (stockAmount ^ (stockAmount >>> 32));
-    return result;
+    return Objects.hashCode(bookId, isbn, bookName, authorName, page, price, stockAmount);
   }
 
   @Override

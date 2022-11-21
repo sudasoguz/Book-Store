@@ -1,6 +1,7 @@
 package com.oguz.bookstore.bookstore.entitiy;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.google.common.base.Objects;
 
 import javax.persistence.*;
 
@@ -69,5 +70,18 @@ public class CustomerOrderItem extends BaseEntity {
 
   public void setCustomerOrder(CustomerOrder customerOrder) {
     this.customerOrder = customerOrder;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CustomerOrderItem that = (CustomerOrderItem) o;
+    return customerOrderItemId == that.customerOrderItemId && quantity == that.quantity && Double.compare(that.totalPrice, totalPrice) == 0 && Objects.equal(book, that.book) && Objects.equal(customerOrder, that.customerOrder);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(customerOrderItemId, book, quantity, totalPrice, customerOrder);
   }
 }

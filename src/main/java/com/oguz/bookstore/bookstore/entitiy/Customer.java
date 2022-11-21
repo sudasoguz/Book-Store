@@ -1,5 +1,7 @@
 package com.oguz.bookstore.bookstore.entitiy;
 
+import com.google.common.base.Objects;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -87,5 +89,18 @@ public class Customer extends BaseEntity{
 
   public void setAddressList(List<Address> addressList) {
     this.addressList = addressList;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Customer customer = (Customer) o;
+    return customerId == customer.customerId && Objects.equal(customerName, customer.customerName) && Objects.equal(customerSurname, customer.customerSurname) && Objects.equal(email, customer.email) && Objects.equal(phoneCountryCode, customer.phoneCountryCode) && Objects.equal(phoneNumber, customer.phoneNumber) && Objects.equal(addressList, customer.addressList);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(customerId, customerName, customerSurname, email, phoneCountryCode, phoneNumber, addressList);
   }
 }

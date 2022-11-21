@@ -47,7 +47,7 @@ public class Address extends BaseEntity{
   @Column(name = "zip_code")
   private String zipCode;
 
-  @ManyToOne()
+  @ManyToOne
   @JoinColumn(name = "customer_id")
   @JsonIgnore
   private Customer customer;
@@ -151,13 +151,6 @@ public class Address extends BaseEntity{
     this.zipCode = zipCode;
   }
 
-  public Customer getCustomer() {
-    return customer;
-  }
-
-  public void setCustomer(Customer customer) {
-    this.customer = customer;
-  }
 
   @Override
   public boolean equals(Object o) {

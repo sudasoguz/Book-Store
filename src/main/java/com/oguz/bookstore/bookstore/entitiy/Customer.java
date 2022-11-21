@@ -27,7 +27,7 @@ public class Customer extends BaseEntity{
   @Column(name = "phone_number")
   private String phoneNumber;
 
-  @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
   private List<Address> addressList;
 
   public Customer() {

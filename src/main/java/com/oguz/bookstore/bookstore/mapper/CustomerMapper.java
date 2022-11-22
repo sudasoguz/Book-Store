@@ -22,7 +22,7 @@ public interface CustomerMapper {
 
   CustomerDto customerToCustomerDto(Customer customer);
 
-  List<Customer> customerListToCustomerDtoList(List<CustomerDto> customerDtoList);
+  List<CustomerDto> customerListToCustomerDtoList(List<Customer> customerList);
 
   Customer customerDtoToCustomer(CustomerDto customerDto);
 

@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "customer")
-public class Customer extends BaseEntity{
+public class Customer extends BaseEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +29,7 @@ public class Customer extends BaseEntity{
   @Column(name = "phone_number")
   private String phoneNumber;
 
-  @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+  @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
   private List<Address> addressList;
 
   public Customer() {

@@ -13,11 +13,7 @@ public class BookDto {
   private int page;
   private double price;
   private long stockAmount;
-
   private Date createdDate;
-
-  public BookDto() {
-  }
 
   public long getBookId() {
     return bookId;

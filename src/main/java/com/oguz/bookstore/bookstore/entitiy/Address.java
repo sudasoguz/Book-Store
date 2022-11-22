@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "address")
-public class Address extends BaseEntity{
+public class Address extends BaseEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,9 +51,6 @@ public class Address extends BaseEntity{
   @JoinColumn(name = "customer_id")
   @JsonIgnore
   private Customer customer;
-
-  public Address() {
-  }
 
   public long getAddressId() {
     return addressId;

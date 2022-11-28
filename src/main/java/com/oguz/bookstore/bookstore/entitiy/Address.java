@@ -47,7 +47,7 @@ public class Address extends BaseEntity {
   @Column(name = "zip_code")
   private String zipCode;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "customer_id")
   @JsonIgnore
   private Customer customer;

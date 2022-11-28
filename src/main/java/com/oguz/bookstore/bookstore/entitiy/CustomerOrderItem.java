@@ -24,7 +24,7 @@ public class CustomerOrderItem extends BaseEntity {
   @Column(name = "total_price")
   private double totalPrice;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "customer_order_id")
   @JsonIgnore
   private CustomerOrder customerOrder;

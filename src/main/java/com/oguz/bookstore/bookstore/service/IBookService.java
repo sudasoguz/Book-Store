@@ -1,5 +1,6 @@
 package com.oguz.bookstore.bookstore.service;
 
+import com.oguz.bookstore.bookstore.dto.BookDto;
 import com.oguz.bookstore.bookstore.entitiy.Book;
 
 import java.util.List;
@@ -17,5 +18,13 @@ public interface IBookService {
   Book updateBookStockAmount(Long bookId, Long stockAmount);
 
   void createBook(Book book);
+
+  BookDto inquireBookDtoById(Long bookId);
+
+  List<BookDto> inquireAllBookDtos();
+
+  void deleteBookByBookId(Long bookId);
+
+  void deleteBook(Book book);
 
 }

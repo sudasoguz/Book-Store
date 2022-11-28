@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class AddressService implements IAddressService {
+public class AddressServiceImpl implements IAddressService {
 
   private final AddressRepository addressRepository;
 
-  public AddressService(AddressRepository addressRepository) {
+  public AddressServiceImpl(AddressRepository addressRepository) {
     this.addressRepository = addressRepository;
   }
 
@@ -30,7 +30,7 @@ public class AddressService implements IAddressService {
 
   @Override
   public List<Address> inquireAddressListByCustomerId(Long customerId) {
-    return this.addressRepository.findByCustomerId(customerId);
+    return this.addressRepository.findByCustomer_CustomerId(customerId);
   }
 
   @Override
